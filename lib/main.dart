@@ -14,7 +14,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       title: 'Meu aplicativo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Color.fromARGB(255, 55, 90, 151),
       ),
       home: LoginPage(),
     );
