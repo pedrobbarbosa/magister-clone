@@ -1,10 +1,13 @@
+// TODO Implement this library.import 'package:flutter/material.dart';
+
 import 'package:flutter/material.dart';
+import 'package:magister_clone/home.dart';
 
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.withOpacity(0.8),
+      backgroundColor: Color(0xFF234E98),
       body: Center(
         child: Container(
           margin: EdgeInsets.fromLTRB(20, 40, 20, 0),
@@ -12,7 +15,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/logo.png', // substitua com o caminho da imagem do seu logo
+                'assets/images/logo.png', // substitua com o caminho da imagem do seu logo
                 height: 100,
               ),
               SizedBox(height: 40),
@@ -20,7 +23,7 @@ class LoginPage extends StatelessWidget {
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
-                  hintText: 'Matrícula',
+                  hintText: 'Matrï¿½cula',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                     borderSide: BorderSide.none,
@@ -51,7 +54,11 @@ class LoginPage extends StatelessWidget {
               SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  // ação do botão de login aqui
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                  // aï¿½ï¿½o do botï¿½o de login aqui
                 },
                 child: Text('Login'),
                 style: ElevatedButton.styleFrom(
