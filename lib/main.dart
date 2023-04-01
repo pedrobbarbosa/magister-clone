@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:magister_clone/teste.dart';
+import 'package:magister_clone/teste.dart';
 import 'login.dart';
 
 void main() {

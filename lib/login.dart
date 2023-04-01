@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:magister_clone/home.dart';
+import 'package:magister_clone/teste.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -56,7 +57,7 @@ class LoginPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                    MaterialPageRoute(builder: (context) => teste()),
                   );
                   // a��o do bot�o de login aqui
                 },

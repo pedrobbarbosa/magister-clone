@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:magister_clone/perfil.dart';
+
+import 'alert.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -7,10 +10,27 @@ class HomeScreen extends StatefulWidget {
 }
 
 @override
+_HomeScreenState createState() => _HomeScreenState();
+
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Perfil()),
+          );
+          // ação quando o botão é pressionado
+        },
+        backgroundColor: Colors.transparent,
+        child: CircleAvatar(
+          radius: 20,
+          backgroundImage: AssetImage('assets/images/perfil.png'),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
       backgroundColor: Color(0xFF234E98),
       body: Center(
         child: Container(
@@ -24,29 +44,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: 180),
             ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.blue,
-        child: PreferredSize(
-          preferredSize: Size.fromHeight(kToolbarHeight),
-          child: Container(
-            color: Colors.white,
-            height: kToolbarHeight,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.home),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.notifications),
-                ),
-              ],
-            ),
           ),
         ),
       ),
