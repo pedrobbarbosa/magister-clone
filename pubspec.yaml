@@ -7,9 +7,11 @@ environment:
   sdk: '>=2.19.2 <3.0.0'
 
 dependencies:
-  carousel_slider: ^4.0.0
+
   flutter:
     sdk: flutter
+  carousel_slider: ^4.0.0
+  
 
 dev_dependencies:
   flutter_test:
@@ -18,6 +20,12 @@ dev_dependencies:
 
 flutter:
   assets:
-   - assets/images/
+   - assets/images/web.png
+   - assets/images/hat.png
+   - assets/images/info.png
+   - assets/images/recursos.png
+   - assets/images/logo.png
+   - assets/images/perfil.png
+
   uses-material-design: true
   

@@ -1,18 +1,16 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:magister_clone/Academicos.dart';
 import 'package:magister_clone/perfil.dart';
-
-import 'alert.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _HomeScreenStata createState() => _HomeScreenStata();
 }
 
-@override
-_HomeScreenState createState() => _HomeScreenState();
-
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenStata extends State<HomeScreen> {
+  var OptonsList = ['Unit na Web', 'informações', 'Acadêmico', 'Recursos'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,27 +24,140 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         backgroundColor: Colors.transparent,
         child: CircleAvatar(
-          radius: 20,
+          radius: 30,
           backgroundImage: AssetImage('assets/images/perfil.png'),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-      backgroundColor: Color(0xFF234E98),
-      body: Center(
-        child: Container(
-          margin: EdgeInsets.fromLTRB(20, 40, 20, 0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets/images/logo.png', // substitua com o caminho da imagem do seu logo
-                height: 100,
-              ),
-              SizedBox(height: 180),
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              const Color(0xFF234E98),
+              const Color(0xFF1D3060),
             ],
+          ),
+        ),
+        child: Center(
+          child: Container(
+            margin: EdgeInsets.fromLTRB(20, 40, 20, 0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  fit: BoxFit.cover,
+                  'assets/images/logo.png', // substitua com o caminho da imagem do seu logo
+                  height: 150,
+                ),
+                SizedBox(height: 160),
+                CarouselSlider(
+                  options: CarouselOptions(
+                    height: 200,
+                    pauseAutoPlayInFiniteScroll: true,
+                  ),
+                  items: [
+                    'assets/images/web.png',
+                    'assets/images/info.png',
+                    'assets/images/hat.png',
+                    'assets/images/recursos.png'
+                  ].map((i) {
+                    return Builder(builder: (BuildContext context) {
+                      return GestureDetector(
+                        onTap: () {
+                          // Adicione aqui a ação desejada ao clicar no item do carousel
+                          if (i == 'assets/images/web.png') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Perfil()),
+                            );
+                          } else if (i == 'assets/images/info.png') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeScreen()),
+                            );
+                          } else if (i == 'assets/images/hat.png') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AcademicsPage()),
+                            );
+                          } else if (i == 'assets/images/recursos.png') {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AcademicsPage()),
+                            );
+                          }
+                        },
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          margin: EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                i,
+                                fit: BoxFit.contain,
+                                height:
+                                    MediaQuery.of(context).size.height * 0.20,
+                                width: MediaQuery.of(context).size.width * 0.30,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              if (i == 'assets/images/web.png')
+                                caixaDeTexto(
+                                  "${OptonsList[0]}",
+                                ),
+                              if (i == 'assets/images/info.png')
+                                caixaDeTexto(
+                                  "${OptonsList[1]}",
+                                ),
+                              if (i == 'assets/images/hat.png')
+                                caixaDeTexto(
+                                  "${OptonsList[2]}",
+                                ),
+                              if (i == 'assets/images/recursos.png')
+                                caixaDeTexto(
+                                  "${OptonsList[3]}",
+                                ),
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+                  }).toList(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
+}
+
+Widget caixaDeTexto(String texto) {
+  return Container(
+    decoration: BoxDecoration(
+      color: Color.fromARGB(255, 238, 235, 235),
+      borderRadius: BorderRadius.circular(10),
+    ),
+    padding: EdgeInsets.symmetric(vertical: 16, horizontal: 88),
+    child: Text(
+      texto,
+      style: TextStyle(
+        color: Color(0xFF234E98),
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
+        overflow: TextOverflow.ellipsis,
+      ),
+    ),
+  );
 }

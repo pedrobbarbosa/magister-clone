@@ -1,6 +1,7 @@
 // TODO Implement this library.import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:magister_clone/Academicos.dart';
 import 'package:magister_clone/home.dart';
 import 'package:magister_clone/teste.dart';
 

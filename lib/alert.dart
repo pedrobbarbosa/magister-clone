@@ -6,7 +6,19 @@ class NotificationTab extends StatefulWidget {
 }
 
 class _NotificationTabState extends State<NotificationTab> {
-  List<String> notifications = [
+  List<String> notification = [
+    'Aviso',
+    'Aviso',
+    'Aviso',
+    'Aviso',
+    'Aviso',
+    'Aviso',
+    'Aviso',
+    'Aviso',
+    'Aviso',
+    'Aviso',
+  ];
+  List<String> msn = [
     'Obrigado por realizar o pagamento. Sua transação foi concluída com sucesso!',
     'Seu pedido foi enviado e está a caminho! Você receberá um e-mail de confirmação assim que for entregue',
     'Você recebeu uma nova mensagem. Verifique sua caixa de entrada para ler e responder',
@@ -18,17 +30,16 @@ class _NotificationTabState extends State<NotificationTab> {
     'Notificação 9',
     'Notificação 10',
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: notifications.length,
+        itemCount: msn.length,
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
-            leading: Icon(Icons.notifications),
-            title: Text(notifications[index]),
-            subtitle: Text('Descrição da notificação'),
+            leading: icones(Icons.notifications),
+            title: texto(notification[index]),
+            subtitle: Text(msn[index]),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
               // ação ao clicar na notificação
@@ -38,4 +49,31 @@ class _NotificationTabState extends State<NotificationTab> {
       ),
     );
   }
+}
+
+Widget texto(String texto) {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(0),
+    ),
+    padding: EdgeInsets.symmetric(vertical: 1, horizontal: 1),
+    child: Text(
+      texto,
+      textAlign: TextAlign.left,
+      style: TextStyle(
+        color: Color(0xFF234E98),
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
+        overflow: TextOverflow.ellipsis,
+      ),
+    ),
+  );
+}
+
+Widget icones(IconData iconData) {
+  return Icon(
+    iconData,
+    size: 24,
+    color: Colors.blue,
+  );
 }
