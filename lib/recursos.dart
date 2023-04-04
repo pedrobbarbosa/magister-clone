@@ -1,47 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:magister_clone/calculo_media.dart';
-import 'package:magister_clone/notas_faltas.dart';
-import 'package:magister_clone/protocolos.dart';
-
+import 'package:magister_clone/Avaliar.dart';
+import 'package:magister_clone/contato.dart';
+import 'package:magister_clone/wifi.dart';
+import 'Academicos.dart';
 import 'horarios.dart';
 
-class BoxItem extends StatelessWidget {
-  final Widget child;
-  final EdgeInsets padding;
+class RecursosPage extends StatelessWidget {
+  const RecursosPage({
+    Key? key,
+  }) : super(key: key);
 
-  const BoxItem(
-      {Key? key, required this.child, this.padding = const EdgeInsets.all(16)})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            offset: Offset(0, 1),
-            blurRadius: 2,
-            spreadRadius: 2,
-          ),
-        ],
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Padding(
-        padding: padding,
-        child: child,
-      ),
-    );
-  }
-}
-
-class AcademicsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Acadêmicos'),
+        title: const Text('Recursos'),
         titleTextStyle: TextStyle(color: Colors.blue[900], fontSize: 22),
         iconTheme: IconThemeData(color: Colors.blue[900]),
         backgroundColor: Colors.white,
@@ -64,14 +37,13 @@ class AcademicsPage extends StatelessWidget {
               SizedBox(height: 15),
               BoxItem(
                 child: ListTile(
-                  leading: Image.asset('lib/icons/calendario.png'),
-                  title: texto('Horários'),
+                  leading: icones(Icons.wifi),
+                  title: texto('Wi-Fi'),
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => HorariosPage()),
+                      MaterialPageRoute(builder: (context) => wifiPage()),
                     );
-
                     // Adicione aqui a ação ao clicar na opção
                   },
                 ),
@@ -79,15 +51,13 @@ class AcademicsPage extends StatelessWidget {
               SizedBox(height: 10),
               BoxItem(
                 child: ListTile(
-                  leading: Image.asset('lib/icons/notas.png'),
-                  title: texto('Notas e Faltas'),
+                  leading: icones(Icons.phonelink_setup_outlined),
+                  title: texto('Avalie o Magister Mobile'),
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                          builder: (context) => NotasFaltasPage()),
+                      MaterialPageRoute(builder: (context) => avaliarPage()),
                     );
-
                     // Adicione aqui a ação ao clicar na opção
                   },
                 ),
@@ -95,31 +65,28 @@ class AcademicsPage extends StatelessWidget {
               SizedBox(height: 10),
               BoxItem(
                 child: ListTile(
-                  leading: Image.asset('lib/icons/calculadora.png'),
-                  title: texto('Calcule sua Média'),
+                  leading: icones(Icons.book),
+                  title: texto('Avalie Sua Biblioteca'),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => CalculoMediaPage()),
-                    );
+                    // Adicione aqui a ação ao clicar na opção
                   },
                 ),
               ),
               SizedBox(height: 10),
               BoxItem(
                 child: ListTile(
-                  leading: Image.asset('lib/icons/protocolo.png'),
-                  title: texto('Protocolos'),
+                  leading: icones(Icons.people_outline_sharp),
+                  title: texto('Contato'),
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ProtocolosPage()),
+                      MaterialPageRoute(builder: (context) => contatoPage()),
                     );
                     // Adicione aqui a ação ao clicar na opção
                   },
                 ),
               ),
+              SizedBox(height: 10),
               SizedBox(height: 15),
             ],
           ),

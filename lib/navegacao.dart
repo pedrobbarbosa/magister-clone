@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:magister_clone/alert.dart';
 import 'package:magister_clone/home.dart';
 
-class teste extends StatefulWidget {
-  teste({Key? key}) : super(key: key);
+class NavegPage extends StatefulWidget {
+  NavegPage({Key? key}) : super(key: key);
   @override
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<teste> {
+class _HomePageState extends State<NavegPage> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     HomeScreen(),

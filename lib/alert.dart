@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magister_clone/widgets/w_alerts.dart';
 
 class NotificationTab extends StatefulWidget {
   @override
@@ -33,19 +34,34 @@ class _NotificationTabState extends State<NotificationTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: msn.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ListTile(
-            leading: icones(Icons.notifications),
-            title: texto(notification[index]),
-            subtitle: Text(msn[index]),
-            trailing: Icon(Icons.arrow_forward),
-            onTap: () {
-              // ação ao clicar na notificação
-            },
-          );
-        },
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              const Color(0xFF234E98),
+              const Color(0xFF1D3060),
+            ],
+          ),
+        ),
+        child: ListView.builder(
+          itemCount: msn.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
+              child: MyalertList(
+                icon: (Icons.notifications),
+                title: (notification[index]),
+                subtitle: (msn[index]),
+                trailing: (Icons.arrow_forward),
+                onTap: () {
+                  // ação ao clicar na notificação
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }

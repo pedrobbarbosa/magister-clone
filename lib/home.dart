@@ -2,6 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:magister_clone/Academicos.dart';
 import 'package:magister_clone/perfil.dart';
+import 'package:magister_clone/recursos.dart';
+import 'package:magister_clone/unit-web.dart';
+
+import 'informacoes.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenStata extends State<HomeScreen> {
-  var OptonsList = ['Unit na Web', 'informações', 'Acadêmico', 'Recursos'];
+  var OptonsList = ['Acadêmico', 'informações', 'Unit na Web', 'Recursos'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,37 +63,38 @@ class _HomeScreenStata extends State<HomeScreen> {
                     pauseAutoPlayInFiniteScroll: true,
                   ),
                   items: [
-                    'assets/images/web.png',
-                    'assets/images/info.png',
                     'assets/images/hat.png',
+                    'assets/images/info.png',
+                    'assets/images/web.png',
                     'assets/images/recursos.png'
                   ].map((i) {
                     return Builder(builder: (BuildContext context) {
                       return GestureDetector(
                         onTap: () {
                           // Adicione aqui a ação desejada ao clicar no item do carousel
-                          if (i == 'assets/images/web.png') {
+                          if (i == 'assets/images/hat.png') {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Perfil()),
+                              MaterialPageRoute(
+                                  builder: (context) => AcademicsPage()),
                             );
                           } else if (i == 'assets/images/info.png') {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeScreen()),
+                                  builder: (context) => informationPage()),
                             );
-                          } else if (i == 'assets/images/hat.png') {
+                          } else if (i == 'assets/images/web.png') {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AcademicsPage()),
+                                  builder: (context) => unitwebPage()),
                             );
                           } else if (i == 'assets/images/recursos.png') {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AcademicsPage()),
+                                  builder: (context) => RecursosPage()),
                             );
                           }
                         },
@@ -105,13 +110,11 @@ class _HomeScreenStata extends State<HomeScreen> {
                                 i,
                                 fit: BoxFit.contain,
                                 height:
-                                    MediaQuery.of(context).size.height * 0.20,
-                                width: MediaQuery.of(context).size.width * 0.30,
+                                    MediaQuery.of(context).size.height * 0.15,
+                                width: MediaQuery.of(context).size.width * 0.20,
                               ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              if (i == 'assets/images/web.png')
+                              SizedBox(),
+                              if (i == 'assets/images/hat.png')
                                 caixaDeTexto(
                                   "${OptonsList[0]}",
                                 ),
@@ -119,7 +122,7 @@ class _HomeScreenStata extends State<HomeScreen> {
                                 caixaDeTexto(
                                   "${OptonsList[1]}",
                                 ),
-                              if (i == 'assets/images/hat.png')
+                              if (i == 'assets/images/web.png')
                                 caixaDeTexto(
                                   "${OptonsList[2]}",
                                 ),
@@ -149,6 +152,7 @@ Widget caixaDeTexto(String texto) {
       color: Color.fromARGB(255, 238, 235, 235),
       borderRadius: BorderRadius.circular(10),
     ),
+    clipBehavior: Clip.hardEdge,
     padding: EdgeInsets.symmetric(vertical: 16, horizontal: 88),
     child: Text(
       texto,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:magister_clone/home.dart';
-import 'package:magister_clone/teste.dart';
+import 'package:magister_clone/navegacao.dart';
 
 import 'login.dart';
 

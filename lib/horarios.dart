@@ -278,9 +278,11 @@ class hora extends StatelessWidget {
     return Container(
       height: 45,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(5),
-          bottomLeft: Radius.circular(5),
+        border: Border(
+          right: BorderSide(
+            width: 1,
+            color: Colors.grey,
+          ),
         ),
         color: Color.fromARGB(255, 255, 255, 255),
       ),
