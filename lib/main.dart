@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:magister_clone/home.dart';
+import 'package:magister_clone/navegacao.dart';
 
 import 'login.dart';
 
@@ -12,7 +14,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Meu aplicativo',
+      title: 'Magister-Clone',
       theme: ThemeData(
         primaryColor: Color.fromARGB(255, 55, 90, 151),
       ),
